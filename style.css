@@ -1,0 +1,95 @@
+:root {
+	--text-size: 100px;
+	--flap-height: 60px;
+	--flap-width: 120px;
+	--flap-gap: 3px;
+	--flap-rounding: 12px;
+
+	--flap-background: #dedede;
+	--flap-text-color: #212121;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100dvw;
+	height: 100dvh;
+	background-color: black;
+	user-select: none;
+	-webkit-user-select: none;
+	gap: calc(var(--flap-gap) * 4);
+}
+
+.dial {
+	position: relative;
+	perspective: 18in;
+}
+
+.flap {
+	box-sizing: border-box;
+	font-family: 'IBM Plex Sans', sans-serif;
+	font-size: calc(var(--text-size));
+	background: var(--flap-background);
+	color: var(--flap-text-color);
+
+	height: var(--flap-height);
+	width: var(--flap-width);
+	overflow: hidden;
+	justify-content: center;
+	line-height: calc(var(--flap-height) * 2);
+	display: flex;
+	border: 2px solid #b8b8b8;
+}
+
+.flap.top {
+	align-items: flex-start;
+	padding-top: calc(var(--flap-gap) / 4);
+	margin-bottom: calc(var(--flap-gap) / 1);
+	border-radius: var(--flap-rounding) var(--flap-rounding) 0 0;
+	border-block-end-width: 0;
+}
+
+.flap.bottom {
+	align-items: flex-end;
+	padding-bottom: calc(var(--flap-gap) / 4);
+	margin-top: calc(var(--flap-gap));
+	border-radius: 0 0 var(--flap-rounding) var(--flap-rounding);
+	border-block-start-width: 0;
+}
+
+.dynamic {
+	position: absolute;
+	top: 0;
+	left: 0;
+	backface-visibility: visible;
+	transform-style: preserve-3d;
+}
+
+.dial.flipping .dynamic {
+	transform: rotateX(-180deg);
+	animation: flip 0.15s forwards;
+}
+
+.dynamic .flap {
+	backface-visibility: hidden;
+	perspective: 100px;
+}
+
+.dynamic .flap.back {
+	transform: rotateX(-180deg);
+	transform-origin: center calc(-1 * var(--flap-gap) / 2);
+}
+
+@keyframes flip {
+	0% {
+		transform: rotateX(0deg);
+	}
+
+	100% {
+		transform: rotateX(-180deg);
+	}
+}
