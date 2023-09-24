@@ -121,9 +121,11 @@ const init = () => {
 let [flaps] = init();
 
 window.onload = async () => {
+    const main = document.querySelector('main');
+
     for (let i in flaps) {
-        flaps[i].appendTo(document.body);
-        if (i == 1) document.body.append(':');
+        flaps[i].appendTo(main);
+        if (i == 1) main.append(':');
     }
 
     setInterval(() => {
@@ -134,7 +136,7 @@ window.onload = async () => {
 
         let time = hours + minutes
 
-        document.body.setAttribute('aria-label', `${hours}:${minutes}`);
+        main.setAttribute('aria-label', `${hours}:${minutes}`);
         document.title = `${hours}:${minutes}`;
 
         for (let i in flaps) {
