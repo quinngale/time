@@ -5,6 +5,8 @@ class SplitFlap {
     #currentValue = 0;
     #display = null;
 
+    #dynamic = null;
+
     #flaps = {};
 
     #lock = false;
@@ -33,6 +35,7 @@ class SplitFlap {
         flap_flap_front.classList.add('flap', 'front', 'top');
         flap_flap_back.classList.add('flap', 'back', 'bottom');
 
+        this.#dynamic = flap_flap;
         this.#flaps.top = top_flap;
         this.#flaps.bottom = bottom_flap;
         this.#flaps.dynamic = {};
@@ -77,7 +80,7 @@ class SplitFlap {
         let returnValue = new Promise((resolve, _reject) => {
             this.#display.classList.add('flipping');
 
-            this.#display.onanimationend = () => {
+            this.#dynamic.onanimationend = () => {
                 this.nextValue();
                 this.#display.classList.remove('flipping');
 
@@ -94,7 +97,7 @@ class SplitFlap {
             while (currentValue != value) {
                 currentValue = await this.flip();
             }
-            setTimeout(() => { resolve(this.getValue()) }, 1000);
+            resolve(this.getValue());
         });
 
         return returnValue;
@@ -134,8 +137,8 @@ window.onload = async () => {
         document.body.setAttribute('aria-label', `${hours}:${minutes}`);
         document.title = `${hours}:${minutes}`;
 
-        for (let flap in flaps) {
-            flaps[flap].flipTo(time[flap]);
+        for (let i in flaps) {
+            flaps[i].flipTo(time[i]);
         }
-    }, 1000)
+    }, 1000);
 }
