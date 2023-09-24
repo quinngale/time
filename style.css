@@ -54,7 +54,7 @@ main {
 
 .flap.top {
 	align-items: flex-start;
-	padding-top: calc(var(--flap-gap) / 4);
+	padding-top: 0;
 	margin-bottom: calc(var(--flap-gap) / 1);
 	border-radius: var(--flap-rounding) var(--flap-rounding) 0 0;
 	border-block-end-width: 0;
@@ -62,7 +62,7 @@ main {
 
 .flap.bottom {
 	align-items: flex-end;
-	padding-bottom: calc(var(--flap-gap) / 4);
+	padding-bottom: 0;
 	margin-top: calc(var(--flap-gap));
 	border-radius: 0 0 var(--flap-rounding) var(--flap-rounding);
 	border-block-start-width: 0;
