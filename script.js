@@ -118,14 +118,21 @@ const init = () => {
 let [flaps] = init();
 
 window.onload = async () => {
-    for (let flap of flaps) {
-        flap.appendTo(document.body);
-        setTimeout(async () => {
-            setInterval(async () => {
-                let random = OPTIONS[Math.floor(Math.random() * OPTIONS.length)];
-                console.info(random);
-                await flap.flipTo(random)
-            }, 20 * 1000);
-        }, 1000)
+    for (let i in flaps) {
+        flaps[i].appendTo(document.body);
+        if (i == 1) document.body.append(':');
     }
+
+    setInterval(() => {
+        const now = new Date();
+
+        let hours = now.getHours().toString().padStart(2, '0');
+        let minutes = now.getMinutes().toString().padStart(2, '0');
+
+        time = hours + minutes
+
+        for (let flap in flaps) {
+            flaps[flap].flipTo(time[flap]);
+        }
+    }, 1000)
 }
