@@ -129,7 +129,10 @@ window.onload = async () => {
         let hours = now.getHours().toString().padStart(2, '0');
         let minutes = now.getMinutes().toString().padStart(2, '0');
 
-        time = hours + minutes
+        let time = hours + minutes
+
+        document.body.setAttribute('aria-label', `${hours}:${minutes}`);
+        document.title = `${hours}:${minutes}`;
 
         for (let flap in flaps) {
             flaps[flap].flipTo(time[flap]);
