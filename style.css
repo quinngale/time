@@ -22,6 +22,8 @@ body {
 	user-select: none;
 	-webkit-user-select: none;
 	gap: calc(var(--flap-gap) * 4);
+	color: var(--flap-background);
+	font-size: var(--text-size);
 }
 
 .dial {
