@@ -128,13 +128,20 @@ window.onload = async () => {
         if (i == 1) main.append(':');
     }
 
+    main.ondblclick = (e) => {
+        if (!document.fullscreenElement) main.requestFullscreen({ navigationUI: "show" });
+        else document.exitFullscreen();
+
+        e.preventDefault();
+    }
+
     setInterval(() => {
         const now = new Date();
 
         let hours = now.getHours().toString().padStart(2, '0');
         let minutes = now.getMinutes().toString().padStart(2, '0');
 
-        let time = hours + minutes
+        let time = hours + minutes;
 
         main.setAttribute('aria-label', `${hours}:${minutes}`);
         document.title = `${hours}:${minutes}`;
