@@ -1,5 +1,5 @@
 :root {
-	--text-size: 100px;
+	--text-size: 120px;
 	--flap-height: 60px;
 	--flap-width: 120px;
 	--flap-gap: 3px;
@@ -16,6 +16,7 @@ body {
 	padding: 0;
 	box-sizing: border-box;
 	font-family: 'IBM Plex Sans', sans-serif;
+	background-color: black;
 }
 
 main {
@@ -24,7 +25,6 @@ main {
 	align-items: center;
 	width: 100dvw;
 	height: 100dvh;
-	background-color: black;
 	user-select: none;
 	-webkit-user-select: none;
 	gap: calc(var(--flap-gap) * 4);
@@ -54,7 +54,7 @@ main {
 
 .flap.top {
 	align-items: flex-start;
-	padding-top: 0;
+	padding-top: calc(-1 * var(--flap-gap));
 	margin-bottom: calc(var(--flap-gap) / 1);
 	border-radius: var(--flap-rounding) var(--flap-rounding) 0 0;
 	border-block-end-width: 0;
@@ -62,7 +62,7 @@ main {
 
 .flap.bottom {
 	align-items: flex-end;
-	padding-bottom: 0;
+	padding-bottom: calc(-1 * var(--flap-gap));
 	margin-top: calc(var(--flap-gap));
 	border-radius: 0 0 var(--flap-rounding) var(--flap-rounding);
 	border-block-start-width: 0;
