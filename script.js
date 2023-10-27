@@ -9,8 +9,6 @@ class SplitFlap {
 
     #flaps = {};
 
-    #lock = false;
-
     constructor(options) {
         if (typeof options != typeof []) {
             throw new TypeError("Variable 'options' is not an array or string");
@@ -72,10 +70,6 @@ class SplitFlap {
     }
 
     async flip() {
-        if (this.#lock) {
-            console.warn("locked");
-            return;
-        };
 
         let returnValue = new Promise((resolve, _reject) => {
             this.#display.classList.add('flipping');
