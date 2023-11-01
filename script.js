@@ -11,7 +11,7 @@ class SplitFlap {
 
     constructor(options) {
         if (typeof options != typeof []) {
-            throw new TypeError("Variable 'options' is not an array or string");
+            throw new TypeError("Variable 'options' is not an array");
         }
 
         this.#options = options;
